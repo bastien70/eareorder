@@ -1,0 +1,27 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Réindexer les compétences' %}
+
+{% block page_content %}
+    <div id="admin_skills_reindex" class="reindex-page" data-url="{{ path('admin_skills_reindex') }}">
+        <table class="table datagrid">
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th class="header-for-field-text text-left" dir="ltr">Nom</th>
+            </tr>
+            </thead>
+            <tbody id="items">
+            {% for skill in skills %}
+                <tr class="item" data-id="{{ skill.id }}">
+                    <td><span class="drag-handler fa fa-reorder">&nbsp;</span></td>
+                    <td data-label="Nom" class="text-left field-text" dir="ltr">
+                        <span title="{{ skill.name }}">{{ skill.name }}</span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
